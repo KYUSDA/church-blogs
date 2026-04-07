@@ -6,7 +6,7 @@ import {
   getBlogBySlugQuery,
   getBlogsByCategoryQuery,
   getBlogsByDateQuery,
-  getBlogsByTagQuery,
+  // getBlogsByTagQuery,
   getRelatedBlogsQuery,
   searchBlogsQuery,
 } from "@/services/blogs";
@@ -49,8 +49,8 @@ const fetchBlogBySlug = (slug: string) =>
   client.fetch<Blog>(getBlogBySlugQuery, { slug });
 const fetchByCategory = (slug: string) =>
   client.fetch<Blog[]>(getBlogsByCategoryQuery, { slug });
-const fetchByTag = (tag: string) =>
-  client.fetch<Blog[]>(getBlogsByTagQuery, { tag });
+// const fetchByTag = (tag: string) =>
+//   client.fetch<Blog[]>(getBlogsByTagQuery, { tag });
 const fetchSearch = (search: string) =>
   client.fetch<Blog[]>(searchBlogsQuery, { search });
 const fetchRelated = (categoryId: string, slug: string) =>
@@ -100,14 +100,14 @@ export function useBlogsByCategory(slug: string) {
 /**
  * Fetch posts filtered by tag.
  */
-export function useBlogsByTag(tag: string) {
-  return useQuery({
-    queryKey: blogKeys.byTag(tag),
-    queryFn: () => fetchByTag(tag),
-    enabled: Boolean(tag),
-    staleTime: 5 * 60 * 1000,
-  });
-}
+// export function useBlogsByTag(tag: string) {
+//   return useQuery({
+//     queryKey: blogKeys.byTag(tag),
+//     queryFn: () => fetchByTag(tag),
+//     enabled: Boolean(tag),
+//     staleTime: 5 * 60 * 1000,
+//   });
+// }
 
 /**
  * Search blogs with built-in debounce via `enabled`.

@@ -79,7 +79,7 @@ export const getBlogsByCategoryQuery = `
 }
 `;
 
-export const getBlogsByTagQuery = `
+export const getBlogsByTagQuery = groq`
 *[_type == "blog" && $tag in tags] | order(publishedAt desc) {
   _id,
   title,
