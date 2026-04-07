@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PortableText } from "@portabletext/react";
+import Image from "next/image";
 
 const components = {
   types: {
     image: ({ value }: any) => (
-      <img src={value.asset.url} alt="" className="rounded-xl my-8 border" />
+      <Image src={value.asset.url} alt="" className="rounded-xl my-8 border" />
     ),
   },
 

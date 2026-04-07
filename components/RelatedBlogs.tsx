@@ -1,12 +1,7 @@
-import { Link } from "react-router-dom";
-import { useBlogs, useRelatedBlogs } from "@/hooks/use-blogs";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useBlogs } from "@/hooks/use-blogs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getBasePath } from "@/lib/getBasePath";
-
-interface RelatedBlogsProps {
-  categoryId: string;
-  excludeId: string;
-}
+import Link from "next/link";
 
 const getContentPreview = (content: any[]) => {
   if (!content || !content.length) return "";
@@ -22,12 +17,8 @@ const getContentPreview = (content: any[]) => {
   return "";
 };
 
-export default function RelatedBlogs({
-  categoryId,
-  excludeId,
-}: RelatedBlogsProps) {
+export default function RelatedBlogs() {
   const { data: blogs, isLoading } = useBlogs();
-  const basePath = getBasePath();
 
   if (isLoading) {
     return (
@@ -49,7 +40,7 @@ export default function RelatedBlogs({
         {blogs.slice(0, 3).map((blog) => (
           <div key={blog._id} className="border-b pb-3 last:border-b-0">
             <Link
-              to={`${basePath}/${blog.slug.current}`}
+              href={`/blog/${blog.slug.current}`}
               className="block hover:text-blue-400 transition"
             >
               <h4 className="font-semibold text-sm">

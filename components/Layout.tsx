@@ -23,11 +23,11 @@ function BlogLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
       {/* MAIN */}
-      <main className="p-4 max-w-7xl mx-auto w-full flex-grow">{children}</main>
+      <main className="p-4 max-w-7xl mx-auto w-full grow">{children}</main>
       {/* FOOTER */}
-      <div className="bg-gray-900 text-white py-6 px-6 flex flex-col md:flex-row justify-between items-center flex-shrink-0">
+      <div className="bg-gray-900 text-white py-6 px-6 flex flex-col md:flex-row justify-between items-center shrink-0">
         <p className="text-sm mb-4 md:mb-0">
-          Copyright © {new Date().getFullYear()} Kirinyaga University Church.
+          Copyright © {new Date().getFullYear()} Kirinyaga University Adventist Church.
           All rights reserved.
         </p>
         <div className="flex space-x-4">

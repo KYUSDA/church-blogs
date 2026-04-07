@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Blog } from "@/hooks/use-blogs";
-import { getBasePath } from "@/lib/getBasePath";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 
 // Portable Text → plain string
 function getPlainText(blocks: any[]): string {
@@ -22,16 +23,17 @@ function getPlainText(blocks: any[]): string {
 
 export default function BlogCard({ blog }: { blog: Blog }) {
   const excerpt = getPlainText(blog.content ?? []).slice(0, 120);
-  const basePath = getBasePath();
 
   return (
     <div className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
       {/* IMAGE */}
-      <Link to={`${basePath}/${blog.slug.current}`}>
+      <Link href={`/blog/${blog.slug.current}`}>
         <div className="overflow-hidden">
-          <img
+          <Image
             src={blog.thumbnail}
             alt={blog.thumbnailAlt ?? blog.title}
+            width={384}
+            height={192}
             className="
               w-full h-48 object-cover
               transform transition duration-500 ease-out
@@ -42,7 +44,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
       </Link>
 
       {/* CONTENT */}
-      <div className="p-4 flex flex-col justify-between h-[200px]">
+      <div className="p-4 flex flex-col justify-between h-50">
         <div>
           <p className="text-sm text-gray-500">
             {new Date(blog.publishedAt).toDateString()} • {blog.readingTime} min
@@ -60,7 +62,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
 
         {/* CTA */}
         <Link
-          to={`${basePath}/${blog.slug.current}`}
+          href={`/blog/${blog.slug.current}`}
           className="
             mt-4 inline-flex items-center text-sm font-medium
             text-blue-600 hover:text-blue-800

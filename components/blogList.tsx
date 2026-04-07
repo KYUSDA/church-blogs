@@ -1,6 +1,6 @@
 import { Blog } from "@/hooks/use-blogs";
 import BlogCard from "./blogCard";
-import { Skeleton } from "@/components/ui/skeleton"; // Adjust path if needed
+import { Skeleton } from "@/components/ui/skeleton";
 
 function BlogCardSkeleton() {
   return (
@@ -11,7 +11,7 @@ function BlogCardSkeleton() {
       </div>
 
       {/* CONTENT SKELETON */}
-      <div className="p-4 flex flex-col justify-between h-[200px]">
+      <div className="p-4 flex flex-col justify-between h-50">
         <div>
           {/* Date and reading time */}
           <Skeleton className="h-4 w-32 mb-2" />
