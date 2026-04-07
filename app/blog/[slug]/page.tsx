@@ -59,7 +59,7 @@ function CalendarCard() {
               dayBlogs?.map((b) => (
                 <Link
                   key={b._id}
-                  href={`/blogs/${b.slug.current}`}
+                  href={`/blog/${b.slug.current}`}
                   className="flex items-start gap-2 group"
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -77,7 +77,7 @@ function CalendarCard() {
 
 // ── Share ──────────────────────────────────────────────────────────────────────
 function ShareCard({ title, slug }: { title: string; slug: string }) {
-  const url = `${window.location.origin}/blogs/${slug}`;
+  const url = `${window.location.origin}/blog/${slug}`;
   const [copied, setCopied] = useState(false);
 
   const copyLink = async () => {

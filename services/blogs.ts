@@ -27,7 +27,7 @@ export const getAllBlogsQuery = `
 }
 `;
 
-export const getBlogBySlugQuery = `
+export const getBlogBySlugQuery = groq`
 *[_type == "blog" && slug.current == $slug][0]{
   _id,
   title,
@@ -62,7 +62,7 @@ export const getBlogBySlugQuery = `
 }
 `;
 
-export const getBlogsByCategoryQuery = `
+export const getBlogsByCategoryQuery = groq`
 *[_type == "blog" && category->slug.current == $slug] | order(publishedAt desc) {
   _id,
   title,
@@ -91,7 +91,7 @@ export const getBlogsByTagQuery = groq`
 }
 `;
 
-export const searchBlogsQuery = `
+export const searchBlogsQuery = groq`
 *[_type == "blog" && (
   title match $search + "*"
 )] | order(publishedAt desc) {
@@ -104,7 +104,7 @@ export const searchBlogsQuery = `
 }
 `;
 
-export const getRelatedBlogsQuery = `
+export const getRelatedBlogsQuery = groq`
 *[_type == "blog" && category._ref == $categoryId && slug.current != $slug] 
 | order(publishedAt desc)[0...3] {
   _id,

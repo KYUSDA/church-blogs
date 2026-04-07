@@ -14,8 +14,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blogs | KYUSDA",
-  description: "Explore our latest blog posts and articles.",
+  title: {
+    default: "KYUSDA Blogs - Faith, Community & Insights",
+    template: "%s | KYUSDA Blogs",
+  },
+  description:
+    "Explore faith-based articles, church updates, and community insights from KYUSDA.",
+  keywords: ["KYUSDA", "Christian blogs", "faith", "Bible", "church articles"],
+  metadataBase: new URL("https://blogs.kyusda.org"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "KYUSDA Blogs",
+    description:
+      "Explore faith-based articles, church updates, and community insights.",
+    url: "https://blogs.kyusda.org",
+    siteName: "KYUSDA Blogs",
+    images: [
+      {
+        url: "/kyusda.jpg",
+        width: 1200,
+        height: 630,
+        alt: "KYUSDA Blogs",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KYUSDA Blogs",
+    description:
+      "Explore faith-based articles, church updates, and community insights.",
+    images: ["/kyusda.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +61,6 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <link rel="shortcut icon" href="kyusda.jpg" type="image/x-icon" />
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
       </body>
