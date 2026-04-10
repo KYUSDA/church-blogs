@@ -15,7 +15,7 @@ function BlogLayout({ children }: { children: ReactNode }) {
         {/* Text content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-            Blog &amp; Articles
+            Blogs &amp; Articles
           </h1>
           <p className="mt-3 text-white/80 max-w-md text-base md:text-lg">
             Sermons, devotionals, and stories from our community

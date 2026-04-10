@@ -7,7 +7,7 @@ import BlogLayout from "@/components/Layout";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { Link2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useState } from "react";
@@ -77,7 +77,9 @@ function CalendarCard() {
 
 // ── Share ──────────────────────────────────────────────────────────────────────
 function ShareCard({ title, slug }: { title: string; slug: string }) {
-  const url = `${window.location.origin}/blog/${slug}`;
+  // const url = `${window.location.origin}/blog/${slug}`;
+  const baseUrl = "https://blogs.kyusda.org";
+  const url = `${baseUrl}/blog/${slug}`;
   const [copied, setCopied] = useState(false);
 
   const copyLink = async () => {
@@ -99,6 +101,15 @@ function ShareCard({ title, slug }: { title: string; slug: string }) {
           <Link2 className="h-4 w-4 text-gray-500" />
           {copied ? "Link copied!" : "Copy link"}
         </button>
+        {/* whatsapp */}
+        <a
+          href={`https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex w-full items-center gap-3 rounded-xl border border-border px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+        >
+          <FaWhatsapp className="h-4 w-4 text-green-500" /> Share on WhatsApp
+        </a>
         <a
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`}
           target="_blank"
@@ -224,8 +235,8 @@ export default function BlogDetail() {
           <Image
             src={blog.thumbnail}
             alt={blog.thumbnailAlt ?? "Blog image"}
-              width={800}
-              height={400}
+            width={800}
+            height={400}
             className="rounded-3xl mb-8 w-full object-cover max-h-105"
           />
           <h1 className="text-4xl font-bold leading-tight">{blog.title}</h1>
